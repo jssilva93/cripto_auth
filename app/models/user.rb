@@ -15,9 +15,9 @@ class User
 
 
   def self.sign_in device_params, session_params={}, oauth_params={}
-    if !session_params[:username].blank? && !session_params[:password].blank?
+    if !session_params[:email].blank? && !session_params[:password].blank?
       login_with_email = true
-      user = User.where(email: session_params[:username].downcase.strip).first
+      user = User.where(email: session_params[:email].downcase.strip).first
       user = user.authenticate(session_params[:password]) if user
     else
       return false, "Parámetros inválidos"
@@ -35,16 +35,6 @@ class User
         return false, @passenger_data_from_third
       end
     end
-  end
-
-  def account
-    regular_account = self.wallet_accounts.regulars.first
-    if !regular_account
-      regular_account = self.wallet_accounts.new
-      regular_account.regular!
-      regular_account.save!
-    end
-    regular_account
   end
 
 end
