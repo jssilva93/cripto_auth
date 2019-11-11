@@ -6,7 +6,7 @@ module Api
         if succeed
           render json: object
         else
-          render json: message, status: :unprocessable_entity
+          render json: {mssg: message}, status: :unprocessable_entity
         end
       end
 
