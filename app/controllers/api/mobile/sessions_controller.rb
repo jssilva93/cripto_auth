@@ -7,8 +7,7 @@ module Api
 
       def create
         valid, obj = User.sign_in(device_params, session_params, oauth_params)
-        render json: obj
-        #default_response obj, valid, obj
+        default_response obj, valid, obj
       end
 
       def checkin
