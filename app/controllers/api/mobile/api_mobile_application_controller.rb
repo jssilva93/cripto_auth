@@ -16,6 +16,6 @@ class Api::Mobile::ApiMobileApplicationController < ApplicationController
 
   def set_locale
     Time.zone = "America/Bogota"
-    I18n.locale = :es
+    #I18n.locale = :es
   end
 end
